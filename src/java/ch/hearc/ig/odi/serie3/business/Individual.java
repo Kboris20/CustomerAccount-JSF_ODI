@@ -3,11 +3,16 @@ package ch.hearc.ig.odi.serie3.business;
 
 
 import java.util.Date;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author boris.klett
  */
+
+@Named (value = "homebean")
+@RequestScoped
 public class Individual extends Customer {
 
     String firstName;
