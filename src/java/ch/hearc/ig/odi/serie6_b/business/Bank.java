@@ -1,9 +1,9 @@
-package ch.hearc.ig.odi.serie3.business;
+package ch.hearc.ig.odi.serie6_b.business;
 
-import ch.hearc.ig.odi.serie3.exceptions.AccountAlreadyExistException;
-import ch.hearc.ig.odi.serie3.exceptions.CustomerAlreadyExistException;
-import ch.hearc.ig.odi.serie3.exceptions.UnknownAccountException;
-import ch.hearc.ig.odi.serie3.exceptions.UnknownCustomerException;
+import ch.hearc.ig.odi.serie6_b.exceptions.AccountAlreadyExistException;
+import ch.hearc.ig.odi.serie6_b.exceptions.CustomerAlreadyExistException;
+import ch.hearc.ig.odi.serie6_b.exceptions.UnknownAccountException;
+import ch.hearc.ig.odi.serie6_b.exceptions.UnknownCustomerException;
 import java.util.Date;
 import java.util.HashMap;
 

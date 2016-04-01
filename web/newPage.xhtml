@@ -10,7 +10,7 @@
         <ui:composition template="/MainTemplate.xhtml">
             <ui:define name="top">
 
-                <h1> Créer un nouveau client</h1>
+                <h1> <h:outputText value="#{msg['cliCreation']}" /></h1>
             </ui:define>
             <ui:define name="content">
                 <h:form>
@@ -18,28 +18,28 @@
                     <br/>   
                     <table>
                         <tr>
-                            <td><label for="nom">Nom:</label></td>
+                            <td><label for="nom"><h:outputText value="#{msg['name']}" /> :</label></td>
                             <td><h:inputText value="#{homeBean.lastName}" id="nom"></h:inputText> </td>
                             <br/>
                         </tr>
                         <tr>
-                            <td><label for="prenom">Prenom:</label></td>
+                            <td><label for="prenom"><h:outputText value="#{msg['firstname']}" /> :</label></td>
                             <td><h:inputText value="#{homeBean.firstName}" id="prenom"></h:inputText></td>
                             <br/>
                         </tr>
                         <tr>
-                            <td><label for="dateNais">Date de naissance:</label></td>
+                            <td><label for="dateNais"><h:outputText value="#{msg['birthday']}" /> :</label></td>
                             <td><h:inputText value="#{homeBean.birthday}" id="dateNais"></h:inputText></td>
                             <br/>
                         </tr>
                         <tr>
-                            <td><label for="email">Email:</label></td>
+                            <td><label for="email"><h:outputText value="#{msg['email']}" /> :</label></td>
                             <td><h:inputText value="#{homeBean.email}" id="email"></h:inputText></td>
                         </tr>
                     </table>
                     <br/>
                     <br/>
-                    <h:commandButton type="submit" action="#{homeBean.check}" value="Valider"></h:commandButton>
+                    <h:commandButton type="submit" action="#{homeBean.check}" value="#{msg['validate']}"></h:commandButton>
 
                 </h:form>
             </ui:define>

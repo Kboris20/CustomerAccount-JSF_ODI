@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.hearc.ig.odi.serie3.exceptions;
+package ch.hearc.ig.odi.serie6_b.exceptions;
 
 /**
  *
  * @author Jérémy
  */
-public class InsufficientBalanceException extends Exception {
-    public InsufficientBalanceException() {
-        System.out.println("Montant insuffisant");
+public class AccountAlreadyExistException extends Exception {
+    public AccountAlreadyExistException() {
+        System.out.println("Un compte avec ce numéro existe déjà");
     }
 }

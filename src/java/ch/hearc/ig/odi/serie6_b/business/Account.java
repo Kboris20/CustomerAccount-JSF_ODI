@@ -1,7 +1,7 @@
-package ch.hearc.ig.odi.serie3.business;
+package ch.hearc.ig.odi.serie6_b.business;
 
-import ch.hearc.ig.odi.serie3.exceptions.InsufficientBalanceException;
-import ch.hearc.ig.odi.serie3.exceptions.NegativeAmmountException;
+import ch.hearc.ig.odi.serie6_b.exceptions.InsufficientBalanceException;
+import ch.hearc.ig.odi.serie6_b.exceptions.NegativeAmmountException;
 
 /**
  *

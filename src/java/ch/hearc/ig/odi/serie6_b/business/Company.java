@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.hearc.ig.odi.serie3.business;
+package ch.hearc.ig.odi.serie6_b.business;
 
 /**
  *

@@ -1,7 +1,7 @@
-package ch.hearc.ig.odi.serie3.business;
+package ch.hearc.ig.odi.serie6_b.business;
 
-import ch.hearc.ig.odi.serie3.exceptions.AccountAlreadyExistException;
-import ch.hearc.ig.odi.serie3.exceptions.UnknownAccountException;
+import ch.hearc.ig.odi.serie6_b.exceptions.AccountAlreadyExistException;
+import ch.hearc.ig.odi.serie6_b.exceptions.UnknownAccountException;
 import java.util.HashMap;
 
 public class Customer {
