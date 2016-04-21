@@ -4,13 +4,22 @@ import ch.hearc.ig.odi.serie6_b.exceptions.AccountAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.exceptions.UnknownAccountException;
 import java.util.HashMap;
 
-public class Customer {
+public class Customer{
+
+    private String lastName;
+    private String firstName;
 
     private Integer number;
     HashMap<String, Account> accounts = new HashMap<>();
 
     public Customer() {
-        
+
+    }
+
+    public Customer(Integer id, String firstName, String lastName) {
+        this.number = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     /**
@@ -19,6 +28,22 @@ public class Customer {
      */
     public Customer(Integer number) {
         this.number = number;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public Integer getNumber() {

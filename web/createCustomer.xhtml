@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:composition template="/MainTemplate.xhtml">
+        <ui:define name="content">
+            <h:body>
+                <h1><h:outputText value="#{msg['cliCreation']}" /></h1>
+                <h:form>
+                    <table>
+                        <tr>
+                            <td><h:outputText value="#{msg['id']}" />: </td><td> <h:inputText value="#{customerCreateBean.number}" required="true" requiredMessage="#{msg['errorNum']}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="#{msg['name']}" />: </td><td><h:inputText value="#{customerCreateBean.lastName}" required="true" requiredMessage="#{msg['errorName']}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="#{msg['firstname']}" />: </td><td><h:inputText value="#{customerCreateBean.firstName}" required="true" requiredMessage="#{msg['errorFn']}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td><h:commandButton type="submit" action="#{customerCreateBean.saveCustomer}" value="#{msg['validate']}"></h:commandButton></td>
+                            <td><h:commandButton type="reset" value="#{msg['reset']}"></h:commandButton></td>
+                            <td><h:commandButton action="#{customerBean.processPageListCustomers}" value="#{msg['cancel']}"></h:commandButton></td>
+                        </tr>
+                    </table>
+                </h:form>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+

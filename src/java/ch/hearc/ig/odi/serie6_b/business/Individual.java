@@ -11,7 +11,7 @@ import javax.inject.Named;
  * @author boris.klett
  */
 
-@Named (value = "homebean")
+@Named (value = "individualBean")
 @RequestScoped
 public class Individual extends Customer {
 

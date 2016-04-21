@@ -4,14 +4,17 @@ import ch.hearc.ig.odi.serie6_b.exceptions.AccountAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.exceptions.CustomerAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.exceptions.UnknownAccountException;
 import ch.hearc.ig.odi.serie6_b.exceptions.UnknownCustomerException;
+import ch.hearc.ig.odi.serie6_b.services.Services;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
+import javax.inject.Inject;
 
 /**
  *
  * @author Jérémy
  */
-public class Bank {
+public class Bank implements Serializable {
 
     private int number;
     private String name;
@@ -19,6 +22,10 @@ public class Bank {
     private HashMap<Integer, Customer> customers = new HashMap<>();
     private HashMap<Integer, Individual> individuals = new HashMap<>();
 
+    public Bank() {
+    }
+
+    @Inject Services services;
     public Bank(int number, String name) {
         this.number = number;
         this.name = name;
@@ -47,6 +54,34 @@ public class Bank {
             throw new UnknownCustomerException(number);
         }
     }
+    
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public HashMap<Integer, Individual> getIndividuals() {
+        return individuals;
+    }
+
+    public void setIndividuals(HashMap<Integer, Individual> individuals) {
+        this.individuals = individuals;
+    }
+
+    public HashMap getCustomerList() {
+        return this.customers;
+    }
 
     public Individual addIndividual(int number, String firstName, String lastName, Date p_birthdate, String p_email) throws CustomerAlreadyExistException {
         Individual i = new Individual(number, firstName, lastName, p_birthdate, p_email);
@@ -55,11 +90,21 @@ public class Bank {
         } else {
             throw new CustomerAlreadyExistException();
         }
-        
+
         return i;
     }
 
-    
+    public Customer addCustomer(int number, String firstName, String lastName) throws CustomerAlreadyExistException {
+        Customer c = new Customer(number, firstName, lastName);
+        if (this.customers.get(number) == null) {
+            this.customers.put(number, c);
+        } else {
+            throw new CustomerAlreadyExistException();
+        }
+
+        return c;
+    }
+
     public Company addCompany(int number, String companyName, String phone, String fax) throws CustomerAlreadyExistException {
         if (this.customers.get(number) == null) {
             Company comp = new Company(number, companyName, phone, fax);
