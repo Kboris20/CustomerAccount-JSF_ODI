@@ -33,6 +33,14 @@ public class Account {
         this.name = name;
         this.rate = rate;
     }
+    
+    public Account(String number, String name, double balance, double rate, Customer customer) {
+        this.customer = customer;
+        this.number = number;
+        this.name = name;
+        this.rate = rate;
+        this.balance = balance;
+    } 
 
     public String getNumber() {
         return this.number;

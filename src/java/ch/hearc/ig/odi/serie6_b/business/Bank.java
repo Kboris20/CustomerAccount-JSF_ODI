@@ -6,8 +6,11 @@ import ch.hearc.ig.odi.serie6_b.exceptions.UnknownAccountException;
 import ch.hearc.ig.odi.serie6_b.exceptions.UnknownCustomerException;
 import ch.hearc.ig.odi.serie6_b.services.Services;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 import javax.inject.Inject;
 
 /**
@@ -16,16 +19,19 @@ import javax.inject.Inject;
  */
 public class Bank implements Serializable {
 
+    private List<Account> listAccount;
     private int number;
     private String name;
-    private HashMap<String, Account> accounts = new HashMap<>();
+    private HashMap<String, Account> accounts = new HashMap<String, Account>();
     private HashMap<Integer, Customer> customers = new HashMap<>();
     private HashMap<Integer, Individual> individuals = new HashMap<>();
 
     public Bank() {
     }
 
-    @Inject Services services;
+    @Inject
+    Services services;
+
     public Bank(int number, String name) {
         this.number = number;
         this.name = name;
@@ -54,7 +60,7 @@ public class Bank implements Serializable {
             throw new UnknownCustomerException(number);
         }
     }
-    
+
     public int getNumber() {
         return number;
     }
@@ -124,7 +130,28 @@ public class Bank implements Serializable {
         }
     }
 
+    public void addAccount(String number, String name, double balance, double rate, Customer customer) throws AccountAlreadyExistException {
+        this.addAccount(new Account(number, name, balance, rate, customer), customer);
+    }
+
     public void addAccount(String number, String name, double rate, Customer customer) throws AccountAlreadyExistException {
         this.addAccount(new Account(number, name, rate, customer), customer);
     }
+
+    public List<Account> getAccountsByCust(Integer cust_id) {
+        listAccount = new ArrayList<Account>();
+        for (Entry<String, Account> entry : this.accounts.entrySet()) {
+            Account account = entry.getValue();
+            if (account.getCustomer().getNumber() == cust_id) {
+                listAccount.add(account);
+            }
+        }
+
+        return listAccount;
+    }
+
+    public Account getAccountById(Integer id_account) {
+        return this.accounts.get(String.valueOf(id_account));
+    }
+
 }

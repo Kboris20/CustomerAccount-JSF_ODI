@@ -22,6 +22,11 @@
             <from-outcome>success</from-outcome>
             <to-view-id>/createCustomer.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-action>#{customerDisplayBean.getCustomer}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/displayCustomer.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
         
     <navigation-rule>
@@ -37,6 +42,7 @@
             <to-view-id>/customersList.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
         <from-view-id>/createCustomerOk.xhtml</from-view-id>
         <navigation-case>
@@ -44,6 +50,21 @@
             <from-outcome>success</from-outcome>
             <to-view-id>/customersList.xhtml</to-view-id>
         </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/displayCustomer.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{accountDisplayBean.getAccount}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/displayAccount.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{customerBean.processPageListCustomers}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/customersList.xhtml</to-view-id>
+        </navigation-case>
+        
     </navigation-rule>
     
 </faces-config>

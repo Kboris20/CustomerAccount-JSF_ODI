@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Hello World</title>
+    </h:head>
+    <ui:composition template="/MainTemplate.xhtml">
+        <ui:define name="content">
+            <h:body>
+                <h1><h:outputText value="Détail du client" /></h1>
+                <br/>
+                <table>
+                    <tr>
+                        <td>
+                            <h:outputText value="Numéro: " /> 
+                        </td>
+                        <td>
+                            <h:outputText value="#{customerDisplayBean.number}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputText value="Nom: " />
+                        </td><td>
+                            <h:outputText value="#{customerDisplayBean.lastName}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputText value="Prénom: " />
+                        </td><td>
+                            <h:outputText value="#{customerDisplayBean.firstName}" />
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <br/>
+                <h1><h:outputText value="Liste des comptes du client" /></h1>
+                <br/>
+                <h:form>
+                    <h:dataTable value="#{customerDisplayBean.customerAccountsList}" var="account"
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row"
+                                 >
+                        <h:column>
+                            <f:facet name="header"><h:outputText value="Numéro" /></f:facet>
+                                #{account.number}
+                        </h:column>
+
+                        <h:column> 
+                            <f:facet name="header"><h:outputText value="Libellé" /></f:facet>
+                                #{account.name}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"><h:outputText value="Solde" /></f:facet>
+                                #{account.balance}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"><h:outputText value="Taux" /></f:facet>
+                                #{account.rate}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"><h:outputText value="Détail" /></f:facet>
+                            <h:commandLink action="#{accountDisplayBean.getAccount}" value="Détail">
+                                <f:setPropertyActionListener target="#{accountDisplayBean.id_from_setProperties}" value="#{account.number}" />
+                            </h:commandLink>
+                        </h:column>
+
+                    </h:dataTable>
+                </h:form>
+                <h:form>
+                    <hr/>
+                    <br/>
+                    <h:commandButton action="#{customerBean.processPageListCustomers}" value="#{msg['return']}"></h:commandButton>
+                </h:form>
+
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+

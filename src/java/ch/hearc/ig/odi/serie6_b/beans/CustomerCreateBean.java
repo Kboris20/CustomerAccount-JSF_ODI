@@ -1,11 +1,9 @@
 package ch.hearc.ig.odi.serie6_b.beans;
 
-import ch.hearc.ig.odi.serie6_b.business.Customer;
 import ch.hearc.ig.odi.serie6_b.exceptions.AccountAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.exceptions.CustomerAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.services.Services;
 import java.io.Serializable;
-import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
