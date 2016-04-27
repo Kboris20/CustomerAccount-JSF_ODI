@@ -2,47 +2,50 @@ package ch.hearc.ig.odi.serie6_b.beans;
 
 import ch.hearc.ig.odi.serie6_b.business.Account;
 import ch.hearc.ig.odi.serie6_b.business.Customer;
-import ch.hearc.ig.odi.serie6_b.exceptions.UnknownCustomerException;
+import ch.hearc.ig.odi.serie6_b.exceptions.AccountAlreadyExistException;
+import ch.hearc.ig.odi.serie6_b.exceptions.CustomerAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.services.Services;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ *
+ * @author boris.klett
+ */
 @Named
 @SessionScoped
-public class AccountDisplayBean implements Serializable {
+public class AccountCreateBean implements Serializable {
 
     private Customer customer;
     private String number;
     private String name;
-    private double balance = 0;
+    private double balance;
     private Double rate;
 
     @Inject
     Services services;
 
-    public AccountDisplayBean() {
+    public AccountCreateBean() {
     }
 
-    public String getAccount(Account account) throws UnknownCustomerException {
-        Account c = services.getAccount(Integer.valueOf(account.getNumber()));
-
-        this.number = c.getNumber();
-        this.name = c.getName();
-        this.balance = c.getBalance();
-        this.rate = c.getRate();
-        this.customer = c.getCustomer();
+    public String saveAccount(Customer c) throws CustomerAlreadyExistException, AccountAlreadyExistException {
+        Account a = new Account(this.number, this.name, this.balance, this.rate, c);
+        services.saveAccount(a, this.customer);
         return "success";
     }
-    
-    public Integer getIdCustomer(){
-        return this.customer.getNumber();
-    }
 
+    public String processPageCreateAccount() {
+        return "success";
+    }
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    public void addCust(Customer customer) {
+        this.customer = customer;
     }
 
     public void setCustomer(Customer customer) {

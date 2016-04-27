@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:composition template="/MainTemplate.xhtml">
+        <ui:define name="content">
+            <h:body>
+                <h1><h:outputText value="Nouveau compte" /></h1>
+                <h:form>
+                    <table>
+                        <tr>
+                            <td><h:outputText value="ID" />: </td><td> <h:inputText value="#{accountCreateBean.number}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="Libellé" />: </td><td><h:inputText value="#{accountCreateBean.name}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="Solde" />: </td><td><h:inputText value="#{accountCreateBean.balance}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="Taux" />: </td><td><h:inputText value="#{accountCreateBean.rate}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td><h:commandButton type="submit" action="#{accountCreateBean.saveAccount(accountDisplayBean.customer)}" value="#{msg['validate']}"></h:commandButton></td>
+                            <td><h:commandButton type="reset" value="#{msg['reset']}"></h:commandButton></td>
+                            <td><h:commandButton action="#{customerBean.processPageListCustomers}" value="#{msg['cancel']}"></h:commandButton></td>
+                            <td><h:commandButton action="#{customerDisplayBean.getCustomer(accountDisplayBean.customer)}" value="Retour vers le client"></h:commandButton></td>
+
+                        </tr>
+                    </table>
+                </h:form>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+

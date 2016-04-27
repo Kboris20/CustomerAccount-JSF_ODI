@@ -4,7 +4,7 @@ import ch.hearc.ig.odi.serie6_b.exceptions.AccountAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.exceptions.CustomerAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.services.Services;
 import java.io.Serializable;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,7 +13,7 @@ import javax.inject.Named;
  * @author boris.klett
  */
 @Named
-@RequestScoped
+@SessionScoped
 public class CustomerCreateBean implements Serializable {
 
     private Integer number;

@@ -68,9 +68,7 @@
 
                         <h:column>
                             <f:facet name="header"><h:outputText value="Détail" /></f:facet>
-                            <h:commandLink action="#{accountDisplayBean.getAccount}" value="Détail">
-                                <f:setPropertyActionListener target="#{accountDisplayBean.id_from_setProperties}" value="#{account.number}" />
-                            </h:commandLink>
+                            <h:commandLink action="#{accountDisplayBean.getAccount(account)}" value="Détail"></h:commandLink>
                         </h:column>
 
                     </h:dataTable>
@@ -78,7 +76,10 @@
                 <h:form>
                     <hr/>
                     <br/>
+                    <h:commandButton action="#{accountCreateBean.processPageCreateAccount}" value="Nouveau"></h:commandButton>
+
                     <h:commandButton action="#{customerBean.processPageListCustomers}" value="#{msg['return']}"></h:commandButton>
+
                 </h:form>
 
             </h:body>

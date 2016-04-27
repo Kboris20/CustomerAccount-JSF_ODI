@@ -23,7 +23,7 @@
             <to-view-id>/createCustomer.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{customerDisplayBean.getCustomer}</from-action>
+            <from-action>#{customerDisplayBean.getCustomer(customer)}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/displayCustomer.xhtml</to-view-id>
         </navigation-case>
@@ -55,7 +55,7 @@
     <navigation-rule>
         <from-view-id>/displayCustomer.xhtml</from-view-id>
         <navigation-case>
-            <from-action>#{accountDisplayBean.getAccount}</from-action>
+            <from-action>#{accountDisplayBean.getAccount(account)}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/displayAccount.xhtml</to-view-id>
         </navigation-case>
@@ -64,7 +64,61 @@
             <from-outcome>success</from-outcome>
             <to-view-id>/customersList.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-action>#{accountCreateBean.processPageCreateAccount}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/createAccount.xhtml</to-view-id>
+        </navigation-case>
         
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/displayAccount.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerDisplayBean.getCustomer(accountDisplayBean.customer)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/displayCustomer.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{customerBean.processPageListCustomers}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/customersList.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    
+    <navigation-rule>
+        <from-view-id>/createAccount.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{AccountCreateBean.saveAccount(accountDisplayBean.customer)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/createAccountOk.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{customerBean.processPageListCustomers}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/customersList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{customerDisplayBean.getCustomer(accountDisplayBean.customer)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/displayCustomer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/createAccountOk.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerBean.processPageListCustomers}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/customersList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{customerDisplayBean.getCustomer(accountDisplayBean.customer)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/displayCustomer.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
 </faces-config>

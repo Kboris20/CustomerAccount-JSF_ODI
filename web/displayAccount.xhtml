@@ -25,33 +25,30 @@
                         <td>
                             <h:outputText value="Libellé: " />
                         </td><td>
-                            <h:outputText value="#{accountDisplayBean.lastName}" />
+                            <h:outputText value="#{accountDisplayBean.name}" />
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <h:outputText value="Solde: " />
                         </td><td>
-                            <h:outputText value="#{accountDisplayBean.firstName}" />
+                            <h:outputText value="#{accountDisplayBean.balance}" />
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <h:outputText value="Taux: " />
                         </td><td>
-                            <h:outputText value="#{accountDisplayBean.firstName}" />
+                            <h:outputText value="#{accountDisplayBean.rate}" />
                         </td>
                     </tr>
                 </table>
                 <hr/>
                 <br/>
                 <h:form>
-                    <hr/>
-                    <br/>
-                    <h:commandButton action="#{customerBean.processPageListCustomers}" value="#{msg['return']}"></h:commandButton>
-                    <h:commandLink action="#{customerDisplayBean.getCustomer}" value="Retour vers le client">
-                        <f:setPropertyActionListener target="#{customerDisplayBean.id_from_setProperties}" value="#{accountDisplayBean.getIdCustomer}" />
-                    </h:commandLink></h:form>
+                    <h:commandButton action="#{customerDisplayBean.getCustomer(accountDisplayBean.customer)}" value="Retour vers le client"></h:commandButton>
+                    <h:commandButton action="#{customerBean.processPageListCustomers}" value="Retour vers la page d'acceuil"></h:commandButton>
+                </h:form>
 
             </h:body>
         </ui:define>

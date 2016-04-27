@@ -6,16 +6,14 @@ import ch.hearc.ig.odi.serie6_b.exceptions.UnknownCustomerException;
 import ch.hearc.ig.odi.serie6_b.services.Services;
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class CustomerDisplayBean implements Serializable {
 
-    private String id_from_setProperties;
-    private Integer id_setProperties;
     private Integer number;
     private String lastName;
     private String firstName;
@@ -26,9 +24,8 @@ public class CustomerDisplayBean implements Serializable {
     public CustomerDisplayBean() {
     }
 
-    public String getCustomer() throws UnknownCustomerException {
-        this.id_setProperties = Integer.parseInt(this.id_from_setProperties);
-        Customer c = services.getCustomer(this.id_setProperties);
+    public String getCustomer(Customer cust) throws UnknownCustomerException {
+        Customer c = services.getCustomer(cust.getNumber());
         this.number = c.getNumber();
         this.lastName = c.getLastName();
         this.firstName = c.getFirstName();
@@ -36,7 +33,7 @@ public class CustomerDisplayBean implements Serializable {
     }
 
     public List<Account> getCustomerAccountsList() {
-        return services.getAccountsByCust(this.id_setProperties);
+        return services.getAccountsByCust(this.number);
     }
 
     public Integer getNumber() {
@@ -61,14 +58,6 @@ public class CustomerDisplayBean implements Serializable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getId_from_setProperties() {
-        return id_from_setProperties;
-    }
-
-    public void setId_from_setProperties(String id_from_setProperties) {
-        this.id_from_setProperties = id_from_setProperties;
     }
 
 }

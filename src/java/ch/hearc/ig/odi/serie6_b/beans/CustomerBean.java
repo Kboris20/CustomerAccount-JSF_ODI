@@ -11,7 +11,7 @@ import ch.hearc.ig.odi.serie6_b.exceptions.CustomerAlreadyExistException;
 import ch.hearc.ig.odi.serie6_b.services.Services;
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -20,7 +20,7 @@ import javax.inject.Named;
  * @author boris.klett
  */
 @Named
-@RequestScoped
+@SessionScoped
 public class CustomerBean implements Serializable {
     @Inject
     Services services;

@@ -51,6 +51,16 @@ public class Services implements Serializable {
     }
 
     /**
+     * 
+     * @param account Le compte qu'on souhaite ajouter
+     * @param customer Le propriétaire du compte ajouté
+     * @throws AccountAlreadyExistException 
+     */
+    public void saveAccount(Account account, Customer customer) throws AccountAlreadyExistException {
+        bank.addAccount(account, customer);
+    }
+
+    /**
      * Retourne le client de la banque qui correspond au numéro passé en
      * paramètre.
      *

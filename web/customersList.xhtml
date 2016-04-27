@@ -38,9 +38,7 @@
 
                         <h:column>
                             <f:facet name="header"><h:outputText value="Détail" /></f:facet>
-                            <h:commandLink action="#{customerDisplayBean.getCustomer}" value="Détail">
-                                <f:setPropertyActionListener target="#{customerDisplayBean.id_from_setProperties}" value="#{customer.number}" />
-                            </h:commandLink>
+                            <h:commandLink action="#{customerDisplayBean.getCustomer(customer)}" value="Détail"/>
                         </h:column>
                     </h:dataTable>
                     <hr/>
